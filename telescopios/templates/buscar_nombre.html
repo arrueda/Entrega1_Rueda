@@ -1,0 +1,22 @@
+{% extends "principal.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+<h3>Buscar nombre en curso:</h3>
+<form action="buscar" method="post">
+    {% csrf_token %}
+    <p>Nombre</p>
+    <input type="text" name="nombre" id="nombre">
+    <input type="submit" value="Buscar">
+
+
+</form>
+
+
+
+
+
+{% endblock %}

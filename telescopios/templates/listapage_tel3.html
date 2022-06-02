@@ -1,0 +1,63 @@
+{% extends "principal.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+
+
+
+<main>
+    <h3 class="text-uppercase text-center">Bienvenidos a la página de observatorios terrestres</h3>
+
+    <h6 class="text-uppercase">Para incorporar mas observatorios, completa el formulario.</h6>
+<form action="alta_tel_ter" method="post">
+    {% csrf_token %}
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Nombre:</span>
+        <input type="text" name="nom_ter" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Escribe el nombre del observatorio">
+    </div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Tiempo de servicio:</span>
+        <input type="number" name="edad_ter" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Escribe el tiempo que ha estado en servicio">
+    </div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Fecha de Inauguración:</span>
+        <input type="date" name="fechalanz_ter" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Escribe la fecha que entró en servicio">
+    </div>
+    <div class="form group">
+        <button class="btn btn-success">Enviar</button>
+    </div>
+
+</form>
+
+
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tiempo de servicio</th>
+            <th scope="col">F. de Inauguración</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+            {% for n in datos3 %}
+            <tr>
+                <th scope="row">{{n.id}}</th>
+                <td>{{n.nom_tel_ter}}</td>
+                <td>{{n.edad_tel_ter}}</td>
+                <td>{{n.fechalanz_tel_ter}}</td>
+              </tr>
+            {% endfor %}
+          
+        </tbody>
+      </table>
+
+</main>
+
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "principal.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+
+
+
+
+
+<main>
+    
+    <h3 class="text-uppercase text-center">Bienvenidos a la página de inscriptos</h3>
+
+    <div class="container">
+        <a class="btn btn-primary" href="http://127.0.0.1:8000/telescopios/buscar_nombre">Buscar nombre</a>
+        
+    </div>
+
+
+
+    <h6 class="text-uppercase">Para incorporarte a nuestros cursos, completa el formulario.</h6>
+<form action="alta_curso" method="post">
+    {% csrf_token %}
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Nombre:</span>
+        <input type="text" name="nom_cur" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Escribe tu nombre">
+    </div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Edad:</span>
+        <input type="number" name="edad_cur" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Escribe tu edad">
+    </div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Fecha de nacimiento:</span>
+        <input type="date" name="fechalanz_cur" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Escribe tu fecha de nacimiento">
+    </div>
+    <div class="form group">
+        <button class="btn btn-success">Enviar</button>
+    </div>
+
+
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Edad</th>
+            <th scope="col">F. de nacimiento</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+            {% for n in datos %}
+            <tr>
+                <th scope="row">{{n.id}}</th>
+                <td>{{n.nom_tel_cur}}</td>
+                <td>{{n.edad_tel_cur}}</td>
+                <td>{{n.fechalanz_tel_cur}}</td>
+              </tr>
+            {% endfor %}
+          
+        </tbody>
+      </table>
+
+</main>
+
+
+{% endblock %}
+
